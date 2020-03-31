@@ -6,7 +6,7 @@
   <select id="listDept" resultType="deptVo">
     select * from dept
   </select>
-  <insert id="insertDept"> 
+  <insert id="insertDept">  
   	insert into dept values(#{dno},#{dname},#{dloc})
   </insert>
 </mapper>
