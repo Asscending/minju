@@ -40,14 +40,25 @@
 </script>
 </head>
 <body>
-	<form action="" id="f">
-		부서번호: <input type="text" name="dno" id="dno"><br> 부서명: <input
-			type="text" name="dname" id="dname"><br> 부서장소: <input
-			type="text" name="dloc" id="dloc"><br>
+	<form id="f">
+	<table>
+	<tr>
+		<td>부서번호:</td>
+		<td><input type="text" name="dno" id="dno"></td>
+	</tr>
+	<tr>
+		<td>부서명:</td>
+		<td><input type="text" name="dname" id="dname"></td>
+	</tr>
+	<tr>
+		<td>부서장소:</td>
+		<td><input type="text" name="dloc" id="dloc"></td>
+	</tr>
+	</table>
 	</form>
 	<button id="btnInsert">부서등록</button>
 
-	<table id="tb">
+	<table id="tb" border="1" width="50%">
 		<thead>
 			<th>부서번호</th>
 			<th>부서명</th>

@@ -34,7 +34,6 @@ body{
 }
 
 table > thead {
-    display: inline-block;
     background-color: rgb(129, 129, 129);
     color: white;
 }
