@@ -15,7 +15,7 @@ private static SqlSessionFactory factory;
 	
 	static {
 		try {
-			Reader reader =  
+			Reader reader =   
 					Resources.getResourceAsReader("com/example/demo/db/sqlMapConfig.xml");
 			factory = new SqlSessionFactoryBuilder().build(reader);
 			reader.close();
