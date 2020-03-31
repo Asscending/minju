@@ -1,5 +1,63 @@
 package com.example.demo.controller;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.google.gson.Gson;
+
+@RestController
 public class EmpController {
 
+	@RequestMapping(value="/listEmp", produces = "application/json;charset=UTF-8")
+	public String listEmp() {
+		String str = "";
+		Gson gson = new Gson();
+		//str = gson.toJson(/*dao.listEmp*/);
+		return str;
+	}
+	
+	@RequestMapping(value="/detailEmp", produces = "application/json;charset=UTF-8")
+	public String detailEmp() {
+		String str = "";
+		Gson gson = new Gson();
+		//str = gson.toJson(/*dao.detailEmp*/);
+		return str;
+	}
+	
+	@RequestMapping("/insertEmp")
+	public String insertEmp() {
+		String str = "사원 등록에 실패했습니다.";
+		/*
+		int re = dao.insertEmp();
+		if( re > 0 ) {
+			str = "사원 등록에 성공했습니다.";
+		}
+		*/
+		return str;
+	}
+	
+	@RequestMapping("/updateEmp")
+	public String updateEmp() {
+		String str = "사원 정보 수정에 실패했습니다.";
+		/*
+		int re = dao.updateEmp();
+		if( re > 0 ) {
+			str = "사원 정보 수정에 성공했습니다.";
+		}
+		*/
+		return str;
+	}
+	
+	@RequestMapping("/deleteEmp")
+	public String deleteEmp() {
+		String str = "사원 정보 삭제에 실패했습니다.";
+		/*
+		int re = dao.deleteEmp();
+		if( re > 0 ) {
+			str = "사원 삭제에 성공했습니다.";
+		}
+		*/
+		return str;
+	}
+	
 }
