@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var arr;
+		listDept();
+		
+		function listDept(){
+			
+			$.getJSON("/listDept",function(data){
+				arr = data;
+				$.each(arr, function(idx, d){
+					var th = $("<th></th>").html();
+					var td1= $("<td></td>").html(d.dno);
+					var td2= $("<td></td>").html(d.dname);
+					var td3= $("<td></td>").html(d.dloc);
+					
+					$(th).append(td1, td2, td3);
+					$("#tb").append(th);
+				});
+			});
+		};
+			
+		
+		
+		$("#btnInsert").click(function(){
+			var dept = $("#f").serialize();
+			$.ajax("/insertDept", {data:dept, success:function(r){
+				listDept();
+			}});	
+		});
+	})
+</script>
+</head>
+<body>
+	<form action="" id="f">
+		<input type="text" name="dno" id="dno">
+		<input type="text" name="dname" id="dname">
+		<input type="text" name="dloc" id="dloc">	
+	</form>
+		<button id="btnInsert">부서등록</button>
+
+	<table id="tb">
+		<th>부서번호</th>
+		<th>부서명</th>
+		<th>부서위치</th>
+	</table>
+</body>
+</html>
