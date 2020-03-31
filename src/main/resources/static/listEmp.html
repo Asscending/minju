@@ -12,8 +12,7 @@
 				success: function (data) {
 					var tbody = $("<tbody></tbody>");
 					$.each(data, function (idx, e) {
-						var a = $("<a></a>").attr("href", "detailEmp.html?eno=" + e.eno).html(e
-							.ename);
+						var a = $("<a></a>").attr("href", "detailEmp.html?eno=" + e.eno).html(e.ename);
 						var eno = $("<td></td>").html(e.eno);
 						var ename = $("<td></td>").append(a);
 						var job = $("<td></td>").html(e.job);

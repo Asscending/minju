@@ -7,7 +7,7 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-	function listDept() {			
+	$(function(){			
 		$("#list").empty();
 		$.getJSON("/listDept", function(data) {
 			var arr = data;
@@ -20,33 +20,10 @@
 				$("#list").append(tr);
 			});
 		});
-	};
-
-	$(function() {
-
-		var arr;
-		listDept();
-
-		$("#btnInsert").click(function() {
-			var dept = $("#f").serialize();
-			$.ajax("/insertDept", {
-				data : dept,
-				success : function(r) {
-					listDept();
-				}
-			});
-		});
-	})
+	});
 </script>
 </head>
 <body>
-	<form action="" id="f">
-		부서번호: <input type="text" name="dno" id="dno"><br> 부서명: <input
-			type="text" name="dname" id="dname"><br> 부서장소: <input
-			type="text" name="dloc" id="dloc"><br>
-	</form>
-	<button id="btnInsert">부서등록</button>
-
 	<table id="tb">
 		<thead>
 			<th>부서번호</th>
