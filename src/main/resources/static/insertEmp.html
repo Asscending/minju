@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btnInsert").click(function(){
+		var emp = $("#f").serialize();
+		$.ajax("insertEmp", {data: emp, success: function(re){
+			alert(re);
+			location.href="listEmp.html";
+		}});
+	});
+});
+</script>
+</head>
+<body>
+<h2>사원 등록</h2>
+<hr>
+<form id="f">
+	<table width="40%">
+		<tr>
+			<td><label for="ename">사원명</label></td>
+			<td><input type="text" id="ename" name="ename" required="required"></td>
+		</tr>
+		<tr>
+			<td><label for="job">직책</label></td>
+			<td><input type="text" id="job" name="job" required="required"></td>
+		</tr>
+		<tr>
+			<td><label for="sal">월급</label></td>
+			<td><input type="number" id="sal" name="sal"></td>
+		</tr>
+		<tr>
+			<td><label for="comm">수당</label></td>
+			<td><input type="text" id="comm" name="comm"></td>
+		</tr>
+		<tr>
+			<td><label for="mgr">관리자번호</label></td>
+			<td><input type="number" id="mgr" name="mgr"></td>
+		</tr>
+		<tr>
+			<td><label for="hiredate">입사일</label></td>
+			<td><input type="date" id="hiredate" name="hiredate" required="required"></td>
+		</tr>
+		<tr>
+			<td><label for="dno">부서번호</label></td>
+			<td><input type="text" id="dno" name="dno" required="required"></td>
+		</tr>
+		<tr>
+			<td><label for="email">이메일</label></td>
+			<td><input type="email" id="email" name="email"></td>
+		</tr>
+		<tr>
+			<td><label for="jumin">주민번호</label></td>
+			<td><input type="text" id="jumin" name="jumin" required="required" placeholder="000000-0000000"></td>
+		</tr>
+	</table>	
+</form>
+<br>
+<button id="btnInsert">사원 등록</button>
+</body>
+</html>
