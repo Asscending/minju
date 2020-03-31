@@ -20,6 +20,7 @@ $(function(){
 		$("#email").val(e.email);
 		$("#jumin").val(e.jumin);
 		
+		console.log(e.hiredate);
 		$("#btnUpdate").click(function(){
 			var emp = $("#f").serialize();
 			$.ajax("updateEmp", {data: emp, success: function(re){
