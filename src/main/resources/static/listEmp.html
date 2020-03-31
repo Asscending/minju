@@ -1,41 +1,73 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="minjoo.css">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-$(function(){
-	$.ajax("/listEmp", {success: function(data){
-		$.each(data, function(idx, e){
-			var a = $("<a></a>").attr("href", "detailEmp.html?eno="+e.eno).html(e.ename);
-			var eno = $("<td></td>").html(e.eno);
-			var ename = $("<td></td>").append(a);
-			var job = $("<td></td>").html(e.job);
-			var mgr = $("<td></td>").html(e.mgr);
-			var dno = $("<td></td>").html(e.dno);
 
-			var tr = $("<tr></tr>").append(eno, ename, job, mgr, dno);
-			var tbody = $("<tbody></tbody>").append(tr);
-			$("#tb").append(tbody);
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="minjoo.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$.ajax("/listEmp", {
+				success: function (data) {
+					var tbody = $("<tbody></tbody>");
+					$.each(data, function (idx, e) {
+						var a = $("<a></a>").attr("href", "detailEmp.html?eno=" + e.eno).html(e
+							.ename);
+						var eno = $("<td></td>").html(e.eno);
+						var ename = $("<td></td>").append(a);
+						var job = $("<td></td>").html(e.job);
+						var mgr = $("<td></td>").html(e.mgr);
+						var dno = $("<td></td>").html(e.dno);
+
+						var tr = $("<tr></tr>").append(eno, ename, job, mgr, dno);
+						tbody.append(tr);
+					});
+					$("#tb").append(tbody);
+				}
+			});
 		});
-	}});
-});
-</script>
+	</script>
 </head>
+
 <body>
-<h2>사원 목록</h2>
-<hr>
-<a href="insertEmp.html">사원등록</a>
-<table border="1" width="80%" id="tb">
-	<thead>
-		<th>사원번호</th>
-		<th>사원명</th>
-		<th>직책</th>
-		<th>관리자 번호</th>
-		<th>부서번호</th>
-	</thead>
-</table>
+	<div id="top">
+		<div id="title">
+			<h2>(주)BeatCompany</h2>
+		</div>
+	</div>
+	<div id="menu">
+		<ul>
+			<li>
+				<a href="listDept.html">부서 목록</a>
+			</li>
+			<li>
+				<a href="insertDept.html">부서 등록</a>
+			</li>
+			<li>
+				<a href="listEmp.html">사원 목록</a>
+			</li>
+			<li>
+				<a href="insertEmp.html">사원 등록</a>
+			</li>
+		</ul>
+	</div>
+	<div id="container">
+		<h2>사원 목록</h2>
+		<table id="tb">
+			<thead>
+				<th>사원번호</th>
+				<th>사원명</th>
+				<th>직책</th>
+				<th>관리자 번호</th>
+				<th>부서번호</th>
+			</thead>
+		</table>
+	</div>
+	<div id="footer">
+		<p>(주)BeatCompany 대표이사 : 김민주</p>
+	</div>
+
 </body>
+
 </html>
