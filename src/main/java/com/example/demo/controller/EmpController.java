@@ -16,6 +16,7 @@ public class EmpController {
 
 	public void setDao(EmpDao dao) {
 		this.dao = dao;
+		
 	}
 
 	@RequestMapping(value="/listEmp", produces = "application/json;charset=UTF-8")

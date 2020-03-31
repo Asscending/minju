@@ -13,6 +13,7 @@ public class DeptDao {
 		return DeptManager.listDept();
 	}
 	
+	
 	public int insertDept(DeptVo d) {
 		return DeptManager.insertDept(d);
 	}

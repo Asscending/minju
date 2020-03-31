@@ -17,6 +17,7 @@ public class DeptController {
 	
 	public void setDao(DeptDao dao) {
 		this.dao = dao;
+		
 	}
 
 	@RequestMapping("/insertDept")
