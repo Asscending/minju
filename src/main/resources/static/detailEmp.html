@@ -24,6 +24,16 @@ $(function(){
 		$("#btnUpdate").click(function(){
 			location.href="/updateEmp.html?eno="+e.eno;
 		});
+		
+		$("#btnDelete").click(function(){
+			var re = confirm("사원을 삭제하시겠습니까?");
+			if( re ){
+				$.ajax("deleteEmp", {data: {eno: e.eno}, success: function(re){
+					alert(re);
+					location.href="listEmp.html";
+				}});
+			}
+		});
 	}});
 });
 </script>
