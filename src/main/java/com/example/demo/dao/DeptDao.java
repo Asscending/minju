@@ -1,5 +1,17 @@
 package com.example.demo.dao;
 
-public class DeptDao {
+import java.util.List;
 
+import com.example.demo.db.DeptManager;
+import com.example.demo.vo.DeptVo;
+
+
+public class DeptDao {
+	public List<DeptVo> listDept(){
+		return DeptManager.listDept();
+	}
+	
+	public int insertDept(DeptVo d) {
+		return DeptManager.insertDept(d);
+	}
 }
