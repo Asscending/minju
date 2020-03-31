@@ -3,25 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="minjoo.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	$("#btnInsert").click(function(){
-		var emp = $("#f").serialize();
-		$.ajax("insertEmp", {data: emp, success: function(re){
-			alert(re);
-			location.href="listEmp.html";
-		}});
-	});
+	var eno = location.search.substring(location.search.indexOf("=")+1);
+	
+	$.ajax("detailEmp", {data: {eno: eno}, success: function(e){
+		$("#eno").val(e.eno);
+		$("#ename").val(e.ename);
+		$("#job").val(e.job);
+		$("#sal").val(e.sal);
+		$("#comm").val(e.comm);
+		$("#mgr").val(e.mgr);
+		$("#hiredate").val(e.hiredate);
+		$("#dno").val(e.dno);
+		$("#email").val(e.email);
+		$("#jumin").val(e.jumin);
+		
+		$("#btnUpdate").click(function(){
+			var emp = $("#f").serialize();
+			$.ajax("updateEmp", {data: emp, success: function(re){
+				alert(re);
+				location.href="listEmp.html";
+			}});
+		});
+	}});
 });
 </script>
 </head>
 <body>
-<h2>사원 등록</h2>
+<h2>사원 정보 수정</h2>
 <hr>
 <form id="f">
-	<table id="insertTB">
+	<table width="40%" border="1">
 		<tr>
 			<td><label for="ename">사원명</label></td>
 			<td><input type="text" id="ename" name="ename" required="required"></td>
@@ -44,7 +58,7 @@ $(function(){
 		</tr>
 		<tr>
 			<td><label for="hiredate">입사일</label></td>
-			<td><input type="date" id="hiredate" name="hiredate" required="required"></td>
+			<td><input type="text" id="hiredate" name="hiredate" required="required"></td>
 		</tr>
 		<tr>
 			<td><label for="dno">부서번호</label></td>
@@ -61,6 +75,6 @@ $(function(){
 	</table>	
 </form>
 <br>
-<button id="btnInsert">사원 등록</button>
+<button id="btnUpdate">수정</button>
 </body>
 </html>
