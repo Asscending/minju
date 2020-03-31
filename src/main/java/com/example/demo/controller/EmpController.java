@@ -15,7 +15,7 @@ public class EmpController {
 	private EmpDao dao;
 
 	public void setDao(EmpDao dao) {
-		this.dao = dao;
+		this.dao = dao; 
 		
 	}
 

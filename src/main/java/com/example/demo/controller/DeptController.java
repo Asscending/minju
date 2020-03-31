@@ -16,7 +16,7 @@ public class DeptController {
 	private DeptDao dao;
 	
 	public void setDao(DeptDao dao) {
-		this.dao = dao;
+		this.dao = dao; 
 		
 	}
 

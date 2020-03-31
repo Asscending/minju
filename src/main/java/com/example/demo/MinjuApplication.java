@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MinjuApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MinjuApplication.class, args);
+		SpringApplication.run(MinjuApplication.class, args); 
 	}
 
 }

@@ -11,7 +11,7 @@ import com.example.demo.vo.EmpVo;
 public class EmpDao {
 	
 	public List<EmpVo> listEmp(){
-		return EmpManager.listEmp();
+		return EmpManager.listEmp(); 
 	}
 	
 	public EmpVo detailEmp(EmpVo v) {

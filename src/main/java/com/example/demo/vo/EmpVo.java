@@ -13,7 +13,7 @@ public class EmpVo {
 	private String ename;
 	private String job;
 	private int sal;
-	private int comm;
+	private int comm; 
 	private int mgr;
 	private String hiredate;
 	private int dno;

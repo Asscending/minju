@@ -7,7 +7,7 @@
   <select id="listEmp" resultType="empVo">
     select *from emp
   </select>
-  
+   
   <select id="detailEmp" resultType="empVo">
     select *from emp where eno=#{eno}
   </select>

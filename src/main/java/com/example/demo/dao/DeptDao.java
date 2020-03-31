@@ -10,7 +10,7 @@ import com.example.demo.vo.DeptVo;
 @Repository
 public class DeptDao {
 	public List<DeptVo> listDept(){
-		return DeptManager.listDept();
+		return DeptManager.listDept(); 
 	}
 	
 	
