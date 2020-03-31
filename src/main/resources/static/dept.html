@@ -1,53 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-	$(function(){
+	function listDept() {			
+
+		$.getJSON("/listDept", function(data) {
+			arr = data;
+			$.each(arr, function(idx, d) {
+				var tr = $("<tr></tr>").html();
+				var td1 = $("<td></td>").html(d.dno);
+				var td2 = $("<td></td>").html(d.dname);
+				var td3 = $("<td></td>").html(d.dloc);
+				$(tr).append(td1, td2, td3);
+				$("#tb").append(tr);
+			});
+		});
+	};
+
+	$(function() {
+
 		var arr;
 		listDept();
-		
-		function listDept(){
-			
-			$.getJSON("/listDept",function(data){
-				arr = data;
-				$.each(arr, function(idx, d){
-					var th = $("<th></th>").html();
-					var td1= $("<td></td>").html(d.dno);
-					var td2= $("<td></td>").html(d.dname);
-					var td3= $("<td></td>").html(d.dloc);
-					
-					$(th).append(td1, td2, td3);
-					$("#tb").append(th);
-				});
-			});
-		};
-			
-		
-		
-		$("#btnInsert").click(function(){
+
+		$("#btnInsert").click(function() {
 			var dept = $("#f").serialize();
-			$.ajax("/insertDept", {data:dept, success:function(r){
-				listDept();
-			}});	
+			$.ajax("/insertDept", {
+				data : dept,
+				success : function(r) {
+					listDept();
+				}
+			});
 		});
 	})
 </script>
 </head>
 <body>
 	<form action="" id="f">
-		ºÎ¼­¹øÈ£: <input type="text" name="dno" id="dno"><br>
-		ºÎ¼­¸í: <input type="text" name="dname" id="dname"><br>
-		ºÎ¼­Àå¼Ò: <input type="text" name="dloc" id="dloc"><br>	
+		ë¶€ì„œë²ˆí˜¸: <input type="text" name="dno" id="dno"><br> ë¶€ì„œëª…: <input
+			type="text" name="dname" id="dname"><br> ë¶€ì„œì¥ì†Œ: <input
+			type="text" name="dloc" id="dloc"><br>
 	</form>
-		<button id="btnInsert">ºÎ¼­µî·Ï</button>
+	<button id="btnInsert">ë¶€ì„œë“±ë¡</button>
 
 	<table id="tb">
-		<th>ºÎ¼­¹øÈ£</th>
-		<th>ºÎ¼­¸í</th>
-		<th>ºÎ¼­À§Ä¡</th>
+		<tr>
+			<th>ë¶€ì„œë²ˆí˜¸</th>
+			<th>ë¶€ì„œëª…</th>
+			<th>ë¶€ì„œìœ„ì¹˜</th>
+		</tr>
 	</table>
 </body>
 </html>
