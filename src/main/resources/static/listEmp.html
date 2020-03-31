@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$.ajax("/listEmp", {success: function(data){
+		$.each(data, function(idx, e){
+			var eno = $("<td></td>").html(e.eno);
+			var ename = $("<td></td>").html(e.ename);
+			var job = $("<td></td>").html(e.job);
+			var mgr = $("<td></td>").html(e.mgr);
+			var dno = $("<td></td>").html(e.dno);
+			var tr = $("<tr></tr>").append(eno, ename, job, mgr, dno);
+			var a = $("<a></a>").attr("href", "detailEmp.html?eno="+e.eno);
+			$(a).append(tr);
+			$("#tb").append(tr);
+		});
+	}});
+});
+</script>
+</head>
+<body>
+<h2>사원 목록</h2>
+<hr>
+<table border="1" width="80%" id="tb">
+	<thead>
+		<th>사원번호</th>
+		<th>사원명</th>
+		<th>직책</th>
+		<th>관리자 번호</th>
+		<th>부서번호</th>
+	</thead>
+</table>
+</body>
+</html>
