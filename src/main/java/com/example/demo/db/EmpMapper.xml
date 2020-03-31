@@ -5,7 +5,7 @@
 <mapper namespace="emp">
 
   <select id="listEmp" resultType="empVo">
-    select *from emp
+    select *from emp order by eno
   </select>
    
   <select id="detailEmp" resultType="empVo">

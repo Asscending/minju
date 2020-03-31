@@ -1,82 +1,122 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-$(function(){
-	var eno = location.search.substring(location.search.indexOf("=")+1);
-	
-	$.ajax("detailEmp", {data: {eno: eno}, success: function(e){
-		$("#eno").val(e.eno);
-		$("#ename").val(e.ename);
-		$("#job").val(e.job);
-		$("#sal").val(e.sal);
-		$("#comm").val(e.comm);
-		$("#mgr").val(e.mgr);
-		$("#hiredate").val(e.hiredate.substring(0, 10));
-		$("#dno").val(e.dno);
-		$("#email").val(e.email);
-		$("#jumin").val(e.jumin);
-		
-		console.log(e.hiredate);
-		$("#btnUpdate").click(function(){
-			var emp = $("#f").serialize();
-			$.ajax("updateEmp", {data: emp, success: function(re){
-				alert(re);
-				location.href="listEmp.html";
-			}});
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="minjoo.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			var eno = location.search.substring(location.search.indexOf("=") + 1);
+
+			$.ajax("detailEmp", {
+				data: {
+					eno: eno
+				},
+				success: function (e) {
+					$("#eno").val(e.eno);
+					$("#ename").val(e.ename);
+					$("#job").val(e.job);
+					$("#sal").val(e.sal);
+					$("#comm").val(e.comm);
+					$("#mgr").val(e.mgr);
+					$("#hiredate").val(e.hiredate.substring(0, 10));
+					$("#dno").val(e.dno);
+					$("#email").val(e.email);
+					$("#jumin").val(e.jumin);
+
+					console.log(e.hiredate);
+					$("#btnUpdate").click(function () {
+						var emp = $("#f").serialize();
+						$.ajax("updateEmp", {
+							data: emp,
+							success: function (re) {
+								alert(re);
+								location.href = "listEmp.html";
+							}
+						});
+					});
+				}
+			});
 		});
-	}});
-});
-</script>
+	</script>
 </head>
+
 <body>
-<h2>사원 정보 수정</h2>
-<hr>
-<form id="f">
-<input type="hidden" id="eno" name="eno">
-	<table width="40%" border="1">
-		<tr>
-			<td><label for="ename">사원명</label></td>
-			<td><input type="text" id="ename" name="ename" required="required"></td>
-		</tr>
-		<tr>
-			<td><label for="job">직책</label></td>
-			<td><input type="text" id="job" name="job" required="required"></td>
-		</tr>
-		<tr>
-			<td><label for="sal">월급</label></td>
-			<td><input type="number" id="sal" name="sal"></td>
-		</tr>
-		<tr>
-			<td><label for="comm">수당</label></td>
-			<td><input type="text" id="comm" name="comm"></td>
-		</tr>
-		<tr>
-			<td><label for="mgr">관리자번호</label></td>
-			<td><input type="number" id="mgr" name="mgr"></td>
-		</tr>
-		<tr>
-			<td><label for="hiredate">입사일</label></td>
-			<td><input type="date" id="hiredate" name="hiredate" required="required" ></td>
-		</tr>
-		<tr>
-			<td><label for="dno">부서번호</label></td>
-			<td><input type="number" id="dno" name="dno" required="required"></td>
-		</tr>
-		<tr>
-			<td><label for="email">이메일</label></td>
-			<td><input type="email" id="email" name="email"></td>
-		</tr>
-		<tr>
-			<td><label for="jumin">주민번호</label></td>
-			<td><input type="text" id="jumin" name="jumin" required="required" placeholder="000000-0000000"></td>
-		</tr>
-	</table>	
-</form>
-<br>
-<button id="btnUpdate">수정</button>
+	<div id="top">
+		<div id="title">
+			<h2>(주)BeatCompany</h2>
+		</div>
+	</div>
+	<div id="menu">
+		<ul>
+			<li>
+				<a href="listDept.html">부서 목록</a>
+			</li>
+			<li>
+				<a href="insertDept.html">부서 등록</a>
+			</li>
+			<li>
+				<a href="listEmp.html">사원 목록</a>
+			</li>
+			<li>
+				<a href="insertEmp.html">사원 등록</a>
+			</li>
+		</ul>
+	</div>
+	<div id="container">
+		<h2>사원 정보 수정</h2>
+		<hr>
+		<form id="f">
+			<input type="hidden" id="eno" name="eno">
+			<table>
+				<tr>
+					<td><label for="ename">사원명</label></td>
+					<td><input type="text" id="ename" name="ename" required="required"></td>
+				</tr>
+				<tr>
+					<td><label for="job">직책</label></td>
+					<td><input type="text" id="job" name="job" required="required"></td>
+				</tr>
+				<tr>
+					<td><label for="sal">월급</label></td>
+					<td><input type="number" id="sal" name="sal"></td>
+				</tr>
+				<tr>
+					<td><label for="comm">수당</label></td>
+					<td><input type="text" id="comm" name="comm"></td>
+				</tr>
+				<tr>
+					<td><label for="mgr">관리자번호</label></td>
+					<td><input type="number" id="mgr" name="mgr"></td>
+				</tr>
+				<tr>
+					<td><label for="hiredate">입사일</label></td>
+					<td><input type="date" id="hiredate" name="hiredate" required="required"></td>
+				</tr>
+				<tr>
+					<td><label for="dno">부서번호</label></td>
+					<td><input type="number" id="dno" name="dno" required="required"></td>
+				</tr>
+				<tr>
+					<td><label for="email">이메일</label></td>
+					<td><input type="email" id="email" name="email"></td>
+				</tr>
+				<tr>
+					<td><label for="jumin">주민번호</label></td>
+					<td><input type="text" id="jumin" name="jumin" required="required" placeholder="000000-0000000">
+					</td>
+				</tr>
+			</table>
+		</form>
+		<br>
+		<button id="btnUpdate">수정</button>
+	</div>
+	<div id="footer">
+		<p>(주)BeatCompany 대표이사 : 김민주</p>
+	</div>
+
 </body>
+
 </html>
