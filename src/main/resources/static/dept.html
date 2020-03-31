@@ -3,32 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="minjoo.css">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-	function listDept() {		
+	function listDept() {			
 		$("#list").empty();
 		$.getJSON("/listDept", function(data) {
-			arr = data;
+			var arr = data;
 			$.each(arr, function(idx, d) {
-				var tr = $("<tr><tr>");
+				var tr = $("<tr></tr>");
 				var td1 = $("<td></td>").html(d.dno);
 				var td2 = $("<td></td>").html(d.dname);
 				var td3 = $("<td></td>").html(d.dloc);
 				$(tr).append(td1, td2, td3);
-				$("#tb").append(tr);
+				$("#list").append(tr);
 			});
 		});
 	};
 
 	$(function() {
+
 		var arr;
 		listDept();
+
 		$("#btnInsert").click(function() {
 			var dept = $("#f").serialize();
 			$.ajax("/insertDept", {
 				data : dept,
 				success : function(r) {
+					listDept();
 				}
 			});
 		});
@@ -44,11 +48,12 @@
 	<button id="btnInsert">부서등록</button>
 
 	<table id="tb">
-		<tr>
+		<thead>
 			<th>부서번호</th>
 			<th>부서명</th>
 			<th>부서위치</th>
-		</tr>
+		</thead>
+		<tbody id="list"></tbody>
 	</table>
 </body>
 </html>
