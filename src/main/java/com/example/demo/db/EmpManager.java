@@ -32,5 +32,41 @@ public class EmpManager {
 		session.close();
 		return list;
 	}
+	
+	public static EmpVo detailEmp(EmpVo v) {
+		SqlSession session = factory.openSession();
+		EmpVo ev = session.selectOne("emp.detailEmp",v);
+		session.close();
+		return ev;
+	}
+	
+	public static int nextEno() {
+		SqlSession session = factory.openSession();
+		int no = session.selectOne("emp.nextEno");
+		session.close();
+		return no;
+	}
+	
+	public static int insertEmp(EmpVo v) {
+		SqlSession session = factory.openSession();
+		int re = session.insert("emp.insertEmp", v);
+		session.commit();
+		session.close();
+		return re;
+	}
+	public static int updateEmp(EmpVo v) {
+		SqlSession session = factory.openSession();
+		int re = session.update("emp.updateEmp", v);
+		session.commit();
+		session.close();
+		return re;
+	}
+	public static int deleteEmp(EmpVo v) {
+		SqlSession session = factory.openSession();
+		int re = session.delete("emp.deleteEmp", v);
+		session.commit();
+		session.close();
+		return re;
+	}
 
 }

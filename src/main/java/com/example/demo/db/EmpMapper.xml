@@ -3,10 +3,29 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="emp">
+
   <select id="listEmp" resultType="empVo">
     select *from emp
   </select>
-  <select id="" resultType="empVo">
-    select *from emp
+  
+  <select id="detailEmp" resultType="empVo">
+    select *from emp where eno=#{eno}
   </select>
+  
+  <select id="nextEno" resultType="java.lang.Integer">
+  	select nvl(max(eno),0)+1 from emp
+  </select>
+  
+  <insert id="insertEmp">
+  	insert into emp value(#{eno},#{ename},#{job},#{sal},#{comm},#{mgr},#{hiredate},#{dno},#{email},#{jumin})
+  </insert>
+  
+  <update id="updateEmp">
+  	update emp set ename=#{ename}, job=#{job}, sal=#{sal}, comm=#{comm}, mgr=#{mgr}, hiredate=#{hiredate}, dno=#{dno}, email=#{email}, jumin=#{jumin} where eno=#{eno}
+  </update>
+  
+  <delete id="deleteEmp">
+  	delete emp where eno=#{eno}
+  </delete>
+  
 </mapper>

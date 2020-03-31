@@ -23,6 +23,5 @@
   <mappers>
     <mapper resource="com/example/demo/db/EmpMapper.xml"/>
     <mapper resource="com/example/demo/db/DeptMapper.xml"/>
-
   </mappers>
 </configuration>
