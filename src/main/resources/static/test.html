@@ -1,103 +1,144 @@
 <!DOCTYPE html>
 <html lang="euc-kr" class="demo-1 no-js">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1"> 
-		<title>(주)Beat Company</title>
-		<meta name="description" content="Hover Effects with animated SVG Shapes using Snap.svg" />
-		<meta name="keywords" content="animated svg, hover effect, grid, svg shape html, " />
-		<meta name="author" content="Codrops" />
-		<link rel="shortcut icon" href="../favicon.ico">
-		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="css/demo.css" />
-		<link rel="stylesheet" type="text/css" href="css/component.css" />
-		<script src="js/snap.svg-min.js"></script>
-
-	</head>
-	<body>
-		<div class="icon">
-			<a href="test.html"><img src="home1.png" width="30" height="30"></a>
-			<a href="login.html"><img src="setting1.png" width="30" height="30"></a>
-		</div>
-		<div class="container">
-			<header class="codrops-header">
-				<h1>BeatCompany에 오신것을 환영합니다.</h1>	
-			</header>
-			<section id="grid" class="grid clearfix">
-				<a href="information.html" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
-					<figure>
-						<img src="img/main1.png" />
-						<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>
-						<figcaption>
-							<h2>회사소개</h2>
-							<p>회사 연혁, 소개, 현황</p>
-							<button>이동</button>
-						</figcaption>
-					</figure>
-				</a>
-				<a href="listDept.html" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
-					<figure>
-						<img src="img/main2.png" />
-						<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>
-						<figcaption>
-							<h2>부서목록</h2>
-							<p>BeatCompany 부서소개</p>
-							<button>이동</button>
-						</figcaption>
-					</figure>
-				</a>
-				<a href="listEmp.html" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
-					<figure>
-						<img src="img/main3.png" />
-						<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>
-						<figcaption>
-							<h2>사원목록</h2>
-							<p>BeatCompany 사원소개</p>
-							<button>이동</button>
-						</figcaption>
-					</figure>
-				</a>
-				<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
-					<figure>
-						<img src="img/main4.png" />
-						<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>
-						<figcaption>
-							<h2>고객센터</h2>
-							<p>고객의 개소리</p>
-							<button>이동</button>
-						</figcaption>
-					</figure>
-				</a>
-			</section>
-		</div><!-- /container -->
-		<script>
-			(function() {
-	
-				function init() {
-					var speed = 250,
-						easing = mina.easeinout;
-
-					[].slice.call ( document.querySelectorAll( '#grid > a' ) ).forEach( function( el ) {
-						var s = Snap( el.querySelector( 'svg' ) ), path = s.select( 'path' ),
-							pathConfig = {
-								from : path.attr( 'd' ),
-								to : el.getAttribute( 'data-path-hover' )
-							};
-
-						el.addEventListener( 'mouseenter', function() {
-							path.animate( { 'path' : pathConfig.to }, speed, easing );
-						} );
-
-						el.addEventListener( 'mouseleave', function() {
-							path.animate( { 'path' : pathConfig.from }, speed, easing );
-						} );
-					} );
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>(주)Beat Company</title>
+	<meta name="description" content="Hover Effects with animated SVG Shapes using Snap.svg" />
+	<meta name="keywords" content="animated svg, hover effect, grid, svg shape html, " />
+	<meta name="author" content="Codrops" />
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.min.css"/>
+	<script src="js/snap.svg-min.js"></script>
+</head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#login").hide();
+	$("#logIn").click(function(){
+		$("#login").show();
+		$("#login").dialog({
+			autoOpen: true,
+			modal: true,
+			buttons: [{
+				text: "로그인",
+				"id": "submit",
+				click: function(){
+					var id = $("#id").val();
+					var pwd = $("#pwd").val();
+					sessionStorage.setItem("id", id);
+					sessionStorage.setItem("pwd", pwd);
+					if( id == "admin" && pwd == "admin" ){
+						alert("관리자 로그인되었습니다.");
+						$(this).dialog("close");
+					}
 				}
+			},{
+				text: "취소",
+				"id": "reset",
+				click: function(){
+					$("#id").val("");
+					$("#pwd").val("");
+				}
+			}]
+		});
+	});
+	
+});
+</script>
+<body>
+	<div class="icon">
+		<a href="test.html"><img src="home1.png" width="30" height="30"></a>
+		<img src="setting1.png" width="30" height="30" id="logIn">
+		<a href="listLog.html"><img src="log.png" width="30" height="30"></a>
+	</div>
+	<div class="container">
+		<header class="codrops-header">
+			<h1>BeatCompany에 오신것을 환영합니다.</h1>	
+		</header>
+		<section id="grid" class="grid clearfix">
+			<a href="information.html" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+				<figure>
+					<img src="img/main1.png" />
+					<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>
+					<figcaption>
+						<h2>회사소개</h2>
+						<p>회사 연혁, 소개, 현황</p>
+						<button>이동</button>
+					</figcaption>
+				</figure>
+			</a>
+			<a href="listDept.html" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+				<figure>
+					<img src="img/main2.png" />
+					<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>
+					<figcaption>
+						<h2>부서목록</h2>
+						<p>BeatCompany 부서소개</p>
+						<button>이동</button>
+					</figcaption>
+				</figure>
+			</a>
+			<a href="listEmp.html" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+				<figure>
+					<img src="img/main3.png" />
+					<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>
+					<figcaption>
+						<h2>사원목록</h2>
+						<p>BeatCompany 사원소개</p>
+						<button>이동</button>
+					</figcaption>
+				</figure>
+			</a>
+			<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+				<figure>
+					<img src="img/main4.png" />
+					<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>
+					<figcaption>
+						<h2>통계</h2>
+						<p>고객의 개소리</p>
+						<button>이동</button>
+					</figcaption>
+				</figure>
+			</a>
+		</section>
+	</div><!-- /container -->
+<script>
+(function() {
+	
+		function init() {
+			var speed = 250,
+				easing = mina.easeinout;
+				[].slice.call ( document.querySelectorAll( '#grid > a' ) ).forEach( function( el ) {
+				var s = Snap( el.querySelector( 'svg' ) ), path = s.select( 'path' ),
+					pathConfig = {
+						from : path.attr( 'd' ),
+						to : el.getAttribute( 'data-path-hover' )
+					};
+					el.addEventListener( 'mouseenter', function() {
+					path.animate( { 'path' : pathConfig.to }, speed, easing );
+				} );
+					el.addEventListener( 'mouseleave', function() {
+					path.animate( { 'path' : pathConfig.from }, speed, easing );
+				} );
+			} );
+		}
 
-				init();
+		init();
 
-			})();
-		</script>
-	</body>
+	})();
+</script>
+
+<div id="login">
+	<label for="id">아이디</label>
+	<input type="text" id="id" name="id"><br>
+	<label for="pwd">비밀번호</label></td>
+	<input type="password" id="pwd" name="pwd">
+</div>
+</body>
 </html>

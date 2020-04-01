@@ -5,7 +5,7 @@
 <mapper namespace="log">
 
   <select id="listLog" resultType="logvo">
-    select * from log order by no
+    select * from log order by no desc
   </select>
   
   <select id="nextNo" resultType="java.lang.Integer">

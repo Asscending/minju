@@ -49,7 +49,7 @@ public class MailController {
 				    message.setSubject("(주)Beat Company <급여 명세서>");
 				    String str = "<h3>안녕하십니까, "+e.getEname()+" "+e.getJob()+"님.<h3>";
 				    str += "<h3>(주)Beat Company입니다.</h3>";
-				    str += "<h3>[ "+e.getEname()+" ]님의 이번 달 급여는 1000만원입니다</h3>";
+				    str += "<h3>[ "+e.getEname()+" ]님의 이번 달 급여는 "+(e.getSal()+e.getComm())+"만원입니다</h3>";
 				    str += "<h3>감사합니다.</h3>";
 				    message.setText(str, true);
 				}
