@@ -24,6 +24,13 @@ public class LogManager {
 		}
 	}
 	
+	public static int nextNo() {
+		SqlSession session = factory.openSession();
+		int no = session.selectOne("log.nextNo");
+		session.close();
+		return no;
+	}
+	
 	public static List<LogVo> listLog(){
 		SqlSession session = factory.openSession();
 		List<LogVo> list = session.selectList("log.listLog");

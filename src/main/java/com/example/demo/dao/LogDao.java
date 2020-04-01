@@ -17,4 +17,8 @@ public class LogDao {
 	public int insert(LogVo vo) {
 		return LogManager.insert(vo);
 	}
+	
+	public int nextNo() {
+		return LogManager.nextNo();
+	}
 }

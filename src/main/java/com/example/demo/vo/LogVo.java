@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LogVo {
+	private int no;
 	private String uri;
 	private String ip;
 	private String time;

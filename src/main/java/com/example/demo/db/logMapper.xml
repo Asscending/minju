@@ -6,7 +6,12 @@
   <select id="listLog" resultType="logvo">
     select * from log order by time
   </select>
+  <select id="nextNo" resultType="java.lang.Integer">
+  	select nvl(max(no),0)+1 from log
+  </select>
+ 
   <insert id="insertLog">  
   	insert into log values(#{uri},#{ip},#{time})
   </insert>
+  
 </mapper>
