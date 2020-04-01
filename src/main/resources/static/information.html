@@ -12,8 +12,39 @@
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 		<script src="js/snap.svg-min.js"></script>
+		<script>
+		$(function(){
+			$("#logi").hide();
+			var id=sessionStorage.getItem("id");
+			var pwd=sessionStorage.getItem("pwd");
+			if(id == "admin" && pwd == "admin"){
+				$("#logi").show();
+			}
+			function init() {
+				var speed = 250,
+					easing = mina.easeinout;
+				[].slice.call ( document.querySelectorAll( '#grid > a' ) ).forEach( function( el ) {
+					var s = Snap( el.querySelector( 'svg' ) ), path = s.select( 'path' ),
+						pathConfig = {
+							from : path.attr( 'd' ),
+							to : el.getAttribute( 'data-path-hover' )
+						};
 
+					el.addEventListener( 'mouseenter', function() {
+						path.animate( { 'path' : pathConfig.to }, speed, easing );
+					} );
+
+					el.addEventListener( 'mouseleave', function() {
+						path.animate( { 'path' : pathConfig.from }, speed, easing );
+					} );
+				} );
+			}
+
+			init();
+		})
+		</script>
 	</head>
 	<body>
 		<div class="icon">
@@ -24,38 +55,5 @@
 		<h2 id="info">회사소개</h2>
 			<img src="information.png" id="imgbox">
 		</div><!-- /container -->
-		<script>
-			(function() {
-				$("#logi").hide();
-				var id=sessionStorage.getItem("id");
-				var pwd=sessionStorage.getItem("pwd");
-				if(id == "admin" && pwd == "admin"){
-					$("#logi").show();
-				}
-				function init() {
-					var speed = 250,
-						easing = mina.easeinout;
-
-					[].slice.call ( document.querySelectorAll( '#grid > a' ) ).forEach( function( el ) {
-						var s = Snap( el.querySelector( 'svg' ) ), path = s.select( 'path' ),
-							pathConfig = {
-								from : path.attr( 'd' ),
-								to : el.getAttribute( 'data-path-hover' )
-							};
-
-						el.addEventListener( 'mouseenter', function() {
-							path.animate( { 'path' : pathConfig.to }, speed, easing );
-						} );
-
-						el.addEventListener( 'mouseleave', function() {
-							path.animate( { 'path' : pathConfig.from }, speed, easing );
-						} );
-					} );
-				}
-
-				init();
-
-			})();
-		</script>
 	</body>
 </html>
