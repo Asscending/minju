@@ -150,6 +150,7 @@ a:hover, a:focus {
 #tb {
 	border-collapse: collapse;
 	margin: 0 auto;
+	margin-top: 91px;
 }
 
 #tb>thead {
@@ -171,6 +172,7 @@ a:hover, a:focus {
 	padding: 8px;
 	text-align: center;
 	color: black;
+	
 }
 
 #info{
@@ -188,8 +190,23 @@ tbody{
 
 .icon{
 	display : inline-block;
-	top: 30px;
-	left: 1150px;
+	top: 50px;
+	float: right;
+	right: 70px;
 	position: fixed;
 	z-index: 100;
+}
+#imgbox{
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+            display:block;
+            margin-top: 100px;
+   		 	margin-left:auto;
+   			margin-right:auto;
+}
+#container{
+    margin-top: 43px;
 }
