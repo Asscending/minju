@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +22,7 @@ public class EmpController {
 	}
 
 	@RequestMapping(value="/listEmp", produces = "application/json;charset=UTF-8")
-	public String listEmp() {
+	public String listEmp(HttpServletRequest request) {
 		String str = "";
 		Gson gson = new Gson();
 		str = gson.toJson(dao.listEmp());
@@ -28,7 +30,7 @@ public class EmpController {
 	}
 	
 	@RequestMapping(value="/detailEmp", produces = "application/json;charset=UTF-8")
-	public String detailEmp(EmpVo e) {
+	public String detailEmp(EmpVo e,HttpServletRequest request) {
 		String str = "";
 		Gson gson = new Gson();
 		str = gson.toJson(dao.detailEmp(e));
@@ -36,7 +38,7 @@ public class EmpController {
 	}
 	
 	@RequestMapping("/insertEmp")
-	public String insertEmp(EmpVo e) {
+	public String insertEmp(EmpVo e,HttpServletRequest request) {
 		String str = "사원 등록에 실패했습니다.";
 
 		e.setEno(dao.nextEno());
@@ -49,7 +51,7 @@ public class EmpController {
 	}
 	
 	@RequestMapping("/updateEmp")
-	public String updateEmp(EmpVo e) {
+	public String updateEmp(EmpVo e,HttpServletRequest request) {
 		String str = "사원 정보 수정에 실패했습니다.";
 		
 		int re = dao.updateEmp(e);
@@ -61,7 +63,7 @@ public class EmpController {
 	}
 	
 	@RequestMapping("/deleteEmp")
-	public String deleteEmp(EmpVo e) {
+	public String deleteEmp(EmpVo e,HttpServletRequest request) {
 		String str = "사원 정보 삭제에 실패했습니다.";
 		
 		int re = dao.deleteEmp(e);

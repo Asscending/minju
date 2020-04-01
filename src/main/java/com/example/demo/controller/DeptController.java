@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +23,7 @@ public class DeptController {
 	}
 
 	@RequestMapping("/insertDept")
-	public String insertDept(DeptVo d) {
+	public String insertDept(DeptVo d,HttpServletRequest request) {
 		String r="등록실패";
 		int re=dao.insertDept(d);
 		if(re>0) {
@@ -31,7 +33,7 @@ public class DeptController {
 	}
 	
 	@RequestMapping("/listDept")
-	public String listDept() {
+	public String listDept(HttpServletRequest request) {
 		String r="";
 		List<DeptVo> list = dao.listDept();
 		r = new Gson().toJson(list);
