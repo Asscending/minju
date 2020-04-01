@@ -7,7 +7,18 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 $(function () {
+	$.getJSON("listDept", function(data){
+		$.each(data, function(idx, d){
+			var op = $("<option value="+d.dno+">"+d.dname+"</option>");
+			$("#dno").append(op);
+		});
+	});
+
+	
 	$("#btnInsert").click(function () {
+		if($("#mgr").val()==""||$("#mgr").val()==null){
+			$("#mgr").val(0);
+		}
 		var emp = $("#f").serialize();
 		$.ajax("insertEmp", {
 			data: emp,
@@ -46,7 +57,7 @@ $(function () {
 	<div id="container">
 		<h2>사원 등록</h2>
 		<form id="f">
-			<table id="tb" width="50%">
+			<table id="tb" width="40%">
 				<tr>
 					<td><label for="ename">사원명</label></td>
 					<td><input type="text" id="ename" name="ename" required="required"></td>
@@ -72,8 +83,8 @@ $(function () {
 					<td><input type="date" id="hiredate" name="hiredate" required="required"></td>
 				</tr>
 				<tr>
-					<td><label for="dno">부서번호</label></td>
-					<td><input type="number" id="dno" name="dno" required="required"></td>
+					<td><label for="dno">부서명</label></td>
+					<td><select name="dno" id="dno" size="1"></select></td>
 				</tr>
 				<tr>
 					<td><label for="email">이메일</label></td>
@@ -81,7 +92,7 @@ $(function () {
 				</tr>
 				<tr>
 					<td><label for="jumin">주민번호</label></td>
-					<td><input type="text" id="jumin" name="jumin" required="required" placeholder="000000-0000000">
+					<td><input type="text" id="jumin" name="jumin" required="required" pattern="[0-9]{6}-[0-9]{7}" placeholder="000000-0000000">
 					</td>
 				</tr>
 			</table>
