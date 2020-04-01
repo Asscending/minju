@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="minjoo.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			var eno = location.search.substring(location.search.indexOf("=") + 1);
+
+			$.ajax("detailEmp", {
+				data: {
+					eno: eno
+				},
+				success: function (e) {
+					$("#eno").html(e.eno);
+					$("#ename").html(e.ename);
+					$("#job").html(e.job);
+					$("#sal").html(e.sal);
+					$("#comm").html(e.comm);
+					$("#mgr").html(e.mgr);
+					$("#hiredate").html(e.hiredate);
+					$("#dno").html(e.dno);
+					$("#email").html(e.email);
+					$("#jumin").html(e.jumin);
+
+					$("#btnUpdate").click(function () {
+						location.href = "/updateEmp.html?eno=" + e.eno;
+					});
+
+					$("#btnDelete").click(function () {
+						var re = confirm("사원을 삭제하시겠습니까?");
+						if (re) {
+							$.ajax("deleteEmp", {
+								data: {
+									eno: e.eno
+								},
+								success: function (re) {
+									alert(re);
+									location.href = "listEmp.html";
+								}
+							});
+						}
+					});
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div id="top">
+		<div id="title">
+			<h2>(주)BeatCompany</h2>
+		</div>
+	</div>
+	<div id="menu">
+		<ul>
+			<li>
+				<a href="listDept.html">부서 목록</a>
+			</li>
+			<li>
+				<a href="insertDept.html">부서 등록</a>
+			</li>
+			<li>
+				<a href="listEmp.html">사원 목록</a>
+			</li>
+			<li>
+				<a href="insertEmp.html">사원 등록</a>
+			</li>
+		</ul>
+	</div>
+	<div id="container">
+		<h2>사원 상세</h2>
+		<table width="40%" id="tb">
+			<tr>
+				<td width="30%"><b>사원번호</b></td>
+				<td id="eno"></td>
+			</tr>
+			<tr>
+				<td><b>사원명</b></td>
+				<td id="ename"></td>
+			</tr>
+			<tr>
+				<td><b>직책</b></td>
+				<td id="job"></td>
+			</tr>
+			<tr>
+				<td><b>월급</b></td>
+				<td id="sal"></td>
+			</tr>
+			<tr>
+				<td><b>수당</b></td>
+				<td id="comm"></td>
+			</tr>
+			<tr>
+				<td><b>관리자 번호</b></td>
+				<td id="mgr"></td>
+			</tr>
+			<tr>
+				<td><b>입사일</b></td>
+				<td id="hiredate"></td>
+			</tr>
+			<tr>
+				<td><b>부서명</b></td>
+				<td id="dno"></td>
+			</tr>
+			<tr>
+				<td><b>이메일</b></td>
+				<td id="email"></td>
+			</tr>
+			<tr>
+				<td><b>주민번호</b></td>
+				<td id="jumin"></td>
+			</tr>
+		</table>
+		<br>
+		<button id="btnUpdate">수정</button>
+		<button id="btnDelete">삭제</button>
+	</div>
+	<div id="footer">
+		<p>(주)BeatCompany 대표이사 : 김민주</p>
+	</div>
+
+</body>
+
+</html>
