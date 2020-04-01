@@ -45,6 +45,5 @@ public class LoggingAspect {
 		vo.setTime(time);
 		
 		dao.insert(vo);
-		
 	}
 }

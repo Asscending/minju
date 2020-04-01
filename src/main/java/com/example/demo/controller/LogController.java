@@ -1,7 +1,9 @@
-/*
+
 package com.example.demo.controller;
 
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +23,8 @@ public class LogController {
 	}
 
 	@RequestMapping(value = "/listLog", produces = "application/json; charset=UTF-8")
-	public String listAll(){
+	public String listAll(HttpServletRequest request){
+		System.out.println("로그 컨트롤러 동작중");
 		String str = "";
 		List<LogVo> list = dao.listAll();
 		Gson gson = new Gson();
@@ -29,14 +32,13 @@ public class LogController {
 		return str;
 	}
 	
-	@RequestMapping("/insertLog")
-	public String insert(LogVo vo) {
-		String r="등록실패";
-		int re = dao.insert(vo);
-		if(re>0){
-			r="등록성공";
-		}
-		return r;
-	}
+//	@RequestMapping("/insertLog")
+//	public String insert(LogVo vo) {
+//		String r="등록실패";
+//		int re = dao.insert(vo);
+//		if(re>0){
+//			r="등록성공";
+//		}
+//		return r;
+//	}
 }
-*/

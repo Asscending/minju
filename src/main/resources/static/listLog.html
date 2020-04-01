@@ -12,10 +12,10 @@ $(function(){
 	$.getJSON("listLog", function(data){
 		$.each(data, function(idx, l){
 			var no = $("<td></td>").html(l.no);
-			var url = $("<td></td>").html(l.url);
+			var uri = $("<td></td>").html(l.uri);
 			var time = $("<td></td>").html(l.time);
 			var ip = $("<td></td>").html(l.ip);
-			var tr = $("<tr></tr>").append(no, url, time, ip);
+			var tr = $("<tr></tr>").append(no, uri, time, ip);
 			$("#list").append(tr);
 		});
 	});
@@ -37,7 +37,9 @@ $(function(){
 		<th>요청 시간</th>
 		<th>요청 ip 주소</th>
 	</thead>
-<tbody id="list"></tbody>
+<tbody id="list">
+
+</tbody>
 </table>
 </div>
 </body>
