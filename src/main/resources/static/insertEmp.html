@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
-	<link rel="stylesheet" type="text/css" href="minjoo.css">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script type="text/javascript">
-		$(function () {
-			$("#btnInsert").click(function () {
-				var emp = $("#f").serialize();
-				$.ajax("insertEmp", {
-					data: emp,
-					success: function (re) {
-						alert(re);
-						location.href = "listEmp.html";
-					}
-				});
-			});
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="minjoo.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	$("#btnInsert").click(function () {
+		var emp = $("#f").serialize();
+		$.ajax("insertEmp", {
+			data: emp,
+			success: function (re) {
+				alert(re);
+				location.href = "listEmp.html";
+			}
 		});
-	</script>
+	});
+});
+</script>
 </head>
 
 <body>
@@ -47,7 +46,7 @@
 	<div id="container">
 		<h2>사원 등록</h2>
 		<form id="f">
-			<table id="insertTB">
+			<table id="tb" width="50%">
 				<tr>
 					<td><label for="ename">사원명</label></td>
 					<td><input type="text" id="ename" name="ename" required="required"></td>
