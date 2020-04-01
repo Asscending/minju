@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="euc-kr" class="demo-1 no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>(주)Beat Company</title>
+		<meta name="description" content="Hover Effects with animated SVG Shapes using Snap.svg" />
+		<meta name="keywords" content="animated svg, hover effect, grid, svg shape html, " />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/snap.svg-min.js"></script>
+
+	</head>
+	<body>
+		<div class="container">
+			<header class="codrops-header">
+				<h1>BeatCompany에 오신것을 환영합니다.</h1>	
+			</header>
+			<section id="grid" class="grid clearfix">
+				<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+					<figure>
+						<img src="img/main1.png" />
+						<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>
+						<figcaption>
+							<h2>회사소개</h2>
+							<p>회사 연혁, 소개, 현황</p>
+							<button>View</button>
+						</figcaption>
+					</figure>
+				</a>
+				<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+					<figure>
+						<img src="img/3.png" />
+						<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>
+						<figcaption>
+							<h2>부서소개</h2>
+							<p>Two greens tigernut soybean radish.</p>
+							<button>View</button>
+						</figcaption>
+					</figure>
+				</a>
+				<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+					<figure>
+						<img src="img/5.png" />
+						<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>
+						<figcaption>
+							<h2>사원소개</h2>
+							<p>Beetroot water spinach okra water.</p>
+							<button>View</button>
+						</figcaption>
+					</figure>
+				</a>
+				<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+					<figure>
+						<img src="img/7.png" />
+						<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>
+						<figcaption>
+							<h2>자유게시판</h2>
+							<p>Water spinach arugula pea tatsoi.</p>
+							<button>View</button>
+						</figcaption>
+					</figure>
+				</a>
+			</section>
+		</div><!-- /container -->
+		<script>
+			(function() {
+	
+				function init() {
+					var speed = 250,
+						easing = mina.easeinout;
+
+					[].slice.call ( document.querySelectorAll( '#grid > a' ) ).forEach( function( el ) {
+						var s = Snap( el.querySelector( 'svg' ) ), path = s.select( 'path' ),
+							pathConfig = {
+								from : path.attr( 'd' ),
+								to : el.getAttribute( 'data-path-hover' )
+							};
+
+						el.addEventListener( 'mouseenter', function() {
+							path.animate( { 'path' : pathConfig.to }, speed, easing );
+						} );
+
+						el.addEventListener( 'mouseleave', function() {
+							path.animate( { 'path' : pathConfig.from }, speed, easing );
+						} );
+					} );
+				}
+
+				init();
+
+			})();
+		</script>
+	</body>
+</html>
