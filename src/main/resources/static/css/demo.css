@@ -146,3 +146,33 @@ a:hover, a:focus {
 	}
 
 }
+
+#tb {
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+#tb>thead {
+	background-color: rgb(66, 66, 66);
+	color: #fff;
+}
+
+#tb>thead>th {
+	padding: 8px;
+	width: 250px;
+}
+
+#tb>tbody>tr{
+	background-color: rgb(151, 151, 151);
+}
+
+#tb>tbody>tr>td {
+	border-bottom: 1px solid gray;
+	padding: 8px;
+	text-align: center;
+	
+}
+
+#info{
+	text-align: center;
+}

@@ -14,7 +14,7 @@
 		$.getJSON("/listDept", function(data) {
 			var arr = data;
 			$.each(arr, function(idx, d) {
-				var tr = $("<tr></tr>");
+				var tr = $("<tr color='black'></tr>");
 				var td1 = $("<td></td>").html(d.dno);
 				var td2 = $("<td></td>").html(d.dname);
 				var td3 = $("<td></td>").html(d.dloc);
@@ -28,8 +28,8 @@
 
 <body>
 	<div class="container">
-		<h2>부서 목록</h2>
-		<table id="tb">
+		<h2 id="info">부서 목록</h2>
+		<table id="tb" width="500">
 			<thead>
 				<th>부서번호</th>
 				<th>부서명</th>
