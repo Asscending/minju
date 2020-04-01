@@ -23,7 +23,7 @@ public class DeptController {
 	}
 
 	@RequestMapping("/insertDept")
-	public String insertDept(DeptVo d,HttpServletRequest request) {
+	public String insertDept(HttpServletRequest request, DeptVo d) {
 		String r="등록실패";
 		int re=dao.insertDept(d);
 		if(re>0) {

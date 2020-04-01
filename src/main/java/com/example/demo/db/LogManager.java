@@ -34,6 +34,7 @@ public class LogManager {
 	public static int insert(LogVo vo) {
 		SqlSession session = factory.openSession();
 		int re = session.insert("log.insertLog",vo);
+		session.commit();
 		session.close();
 		return re;
 	}

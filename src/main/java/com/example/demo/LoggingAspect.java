@@ -34,11 +34,13 @@ public class LoggingAspect {
 	private void before(JoinPoint joinPoint) {
 		String methodName = joinPoint.getSignature().toShortString();
 		HttpServletRequest request = (HttpServletRequest)joinPoint.getArgs()[0];
-		
+		System.out.println("aop after 작동중");
 		String uri = request.getRequestURI();
 		String ip = request.getRemoteAddr();
 		String time = new Date().toLocaleString();
-		
+		System.out.println(uri);
+		System.out.println(ip);
+		System.out.println(time);
 		LogVo vo = new LogVo();
 		vo.setUri(uri);
 		vo.setIp(ip);

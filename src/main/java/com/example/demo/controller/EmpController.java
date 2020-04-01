@@ -30,7 +30,7 @@ public class EmpController {
 	}
 	
 	@RequestMapping(value="/detailEmp", produces = "application/json;charset=UTF-8")
-	public String detailEmp(EmpVo e,HttpServletRequest request) {
+	public String detailEmp(HttpServletRequest request,EmpVo e) {
 		String str = "";
 		Gson gson = new Gson();
 		str = gson.toJson(dao.detailEmp(e));
@@ -38,7 +38,7 @@ public class EmpController {
 	}
 	
 	@RequestMapping("/insertEmp")
-	public String insertEmp(EmpVo e,HttpServletRequest request) {
+	public String insertEmp(HttpServletRequest request,EmpVo e) {
 		String str = "사원 등록에 실패했습니다.";
 
 		e.setEno(dao.nextEno());
@@ -51,7 +51,7 @@ public class EmpController {
 	}
 	
 	@RequestMapping("/updateEmp")
-	public String updateEmp(EmpVo e,HttpServletRequest request) {
+	public String updateEmp(HttpServletRequest request,EmpVo e) {
 		String str = "사원 정보 수정에 실패했습니다.";
 		
 		int re = dao.updateEmp(e);
@@ -63,7 +63,7 @@ public class EmpController {
 	}
 	
 	@RequestMapping("/deleteEmp")
-	public String deleteEmp(EmpVo e,HttpServletRequest request) {
+	public String deleteEmp(HttpServletRequest request,EmpVo e) {
 		String str = "사원 정보 삭제에 실패했습니다.";
 		
 		int re = dao.deleteEmp(e);
