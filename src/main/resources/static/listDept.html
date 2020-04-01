@@ -1,53 +1,33 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="euc-kr" class="demo-1 no-js">
 <head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
-	<link rel="stylesheet" type="text/css" href="minjoo.css">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script type="text/javascript">
-		$(function () {
-			$("#list").empty();
-			$.getJSON("/listDept", function (data) {
-				var arr = data;
-				$.each(arr, function (idx, d) {
-					var tr = $("<tr></tr>");
-					var td1 = $("<td></td>").html(d.dno);
-					var td2 = $("<td></td>").html(d.dname);
-					var td3 = $("<td></td>").html(d.dloc);
-					$(tr).append(td1, td2, td3);
-					$("#list").append(tr);
-				});
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="css/demo.css" />
+<link rel="stylesheet" type="text/css" href="css/component.css" />
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#list").empty();
+		$.getJSON("/listDept", function(data) {
+			var arr = data;
+			$.each(arr, function(idx, d) {
+				var tr = $("<tr></tr>");
+				var td1 = $("<td></td>").html(d.dno);
+				var td2 = $("<td></td>").html(d.dname);
+				var td3 = $("<td></td>").html(d.dloc);
+				$(tr).append(td1, td2, td3);
+				$("#list").append(tr);
 			});
 		});
-	</script>
+	});
+</script>
 </head>
 
 <body>
-
-	<div id="top">
-		<div id="title">
-			<h2>(주)BeatCompany</h2>
-		</div>
-	</div>
-	<div id="menu">
-		<ul>
-			<li>
-				<a href="listDept.html">부서 목록</a>
-			</li>
-			<li>
-				<a href="insertDept.html">부서 등록</a>
-			</li>
-			<li>
-				<a href="listEmp.html">사원 목록</a>
-			</li>
-			<li>
-				<a href="insertEmp.html">사원 등록</a>
-			</li>
-		</ul>
-	</div>
-	<div id="container">
+	<div class="container">
 		<h2>부서 목록</h2>
 		<table id="tb">
 			<thead>
@@ -58,9 +38,7 @@
 			<tbody id="list"></tbody>
 		</table>
 	</div>
-	<div id="footer">
-		<p>(주)BeatCompany 대표이사 : 김민주</p>
-	</div>
+
 </body>
 
 </html>
