@@ -185,3 +185,11 @@ tbody tr:nth-child(odd){
 tbody{
 	opacity: 95%;	
 }
+
+.icon{
+	display : inline-block;
+	top: 30px;
+	left: 1150px;
+	position: fixed;
+	z-index: 100;
+}

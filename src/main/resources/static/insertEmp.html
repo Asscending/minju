@@ -1,66 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html class="demo-1 no-js">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="minjoo.css">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="css/demo.css" />
+<link rel="stylesheet" type="text/css" href="css/component.css" />
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-$(function () {
-	$.getJSON("listDept", function(data){
-		$.each(data, function(idx, d){
-			var op = $("<option value="+d.dno+">"+d.dname+"</option>");
-			$("#dno").append(op);
+	$(function() {
+		$.getJSON("listDept", function(data) {
+			$.each(data, function(idx, d) {
+				var op = $("<option value="+d.dno+">" + d.dname + "</option>");
+				$("#dno").append(op);
+			});
 		});
-	});
 
-	
-	$("#btnInsert").click(function () {
-		if($("#mgr").val()==""||$("#mgr").val()==null){
-			$("#mgr").val(0);
-		}
-		var emp = $("#f").serialize();
-		$.ajax("insertEmp", {
-			data: emp,
-			success: function (re) {
-				alert(re);
-				location.href = "listEmp.html";
+		$("#btnInsert").click(function() {
+			if ($("#mgr").val() == "" || $("#mgr").val() == null) {
+				$("#mgr").val(0);
 			}
+			var emp = $("#f").serialize();
+			$.ajax("insertEmp", {
+				data : emp,
+				success : function(re) {
+					alert(re);
+					location.href = "listEmp.html";
+				}
+			});
 		});
 	});
-});
 </script>
 </head>
 
 <body>
-	<div id="top">
-		<div id="title">
-			<h2>(주)BeatCompany</h2>
-		</div>
-	</div>
-	<div id="menu">
-		<ul>
-			<li>
-				<a href="listDept.html">부서 목록</a>
-			</li>
-			<li>
-				<a href="insertDept.html">부서 등록</a>
-			</li>
-			<li>
-				<a href="listEmp.html">사원 목록</a>
-			</li>
-			<li>
-				<a href="insertEmp.html">사원 등록</a>
-			</li>
-		</ul>
+	<div class="icon">
+		<a href="test.html"><img src="home.png" width="30" height="30"></a>
+		<a href="login.html"><img src="setting.png" width="30" height="30"></a>
 	</div>
 	<div id="container">
-		<h2>사원 등록</h2>
+		<h2 id="info">사원 등록</h2>
 		<form id="f">
 			<table id="tb" width="40%">
 				<tr>
 					<td><label for="ename">사원명</label></td>
-					<td><input type="text" id="ename" name="ename" required="required"></td>
+					<td><input type="text" id="ename" name="ename"
+						required="required"></td>
 				</tr>
 				<tr>
 					<td><label for="job">직책</label></td>
@@ -80,7 +66,8 @@ $(function () {
 				</tr>
 				<tr>
 					<td><label for="hiredate">입사일</label></td>
-					<td><input type="date" id="hiredate" name="hiredate" required="required"></td>
+					<td><input type="date" id="hiredate" name="hiredate"
+						required="required"></td>
 				</tr>
 				<tr>
 					<td><label for="dno">부서명</label></td>
@@ -92,18 +79,15 @@ $(function () {
 				</tr>
 				<tr>
 					<td><label for="jumin">주민번호</label></td>
-					<td><input type="text" id="jumin" name="jumin" required="required" pattern="[0-9]{6}-[0-9]{7}" placeholder="000000-0000000">
-					</td>
+					<td><input type="text" id="jumin" name="jumin"
+						required="required" pattern="[0-9]{6}-[0-9]{7}"
+						placeholder="000000-0000000"></td>
 				</tr>
 			</table>
 		</form>
 		<br>
 		<button id="btnInsert">사원 등록</button>
 	</div>
-	<div id="footer">
-		<p>(주)BeatCompany 대표이사 : 김민주</p>
-	</div>
-
 </body>
 
 </html>
