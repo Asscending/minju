@@ -18,8 +18,7 @@
 	<body>
 		<div class="icon">
 			<a href="test.html"><img src="home1.png" width="30" height="30"></a>
-			<a href="login.html"><img src="setting1.png" width="30" height="30"></a>
-			<a href="listLog.html"><img src="log.png" width="30" height="30"></a>
+			<a href="listLog.html"><img src="log.png" width="30" height="30" id="logi"></a>
 		</div>
 		<div class="container">
 		<h2 id="info">회사소개</h2>
@@ -27,6 +26,12 @@
 		</div><!-- /container -->
 		<script>
 			(function() {
+				$("#logi").hide();
+				var id=sessionStorage.getItem("id");
+				var pwd=sessionStorage.getItem("pwd");
+				if(id == "admin" && pwd == "admin"){
+					$("#logi").show();
+				}
 				function init() {
 					var speed = 250,
 						easing = mina.easeinout;

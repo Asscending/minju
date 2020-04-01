@@ -11,8 +11,21 @@
 	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
+		$("#logi").hide();
+		var id=sessionStorage.getItem("id");
+		var pwd=sessionStorage.getItem("pwd");
+		if(id == "admin" && pwd == "admin"){
+			$("#logi").show();
+		}
 		var eno = location.search.substring(location.search.indexOf("=") + 1);
-	
+		$("#btnUpdate").hide();
+		$("#btnDelete").hide();
+		var id=sessionStorage.getItem("id");
+		var pwd=sessionStorage.getItem("pwd");
+		if(id == "admin" && pwd == "admin"){
+			$("#btnUpdate").show();
+			$("#btnDelete").show();
+		}
 		$.ajax("detailEmp", {
 			data : {
 				eno : eno
@@ -49,6 +62,7 @@
 				});
 			}
 		});
+		
 	});
 </script>
 </head>
@@ -56,8 +70,7 @@
 <body>
 <div class="icon">
 			<a href="test.html"><img src="home1.png" width="30" height="30"></a>
-			<a href="login.html"><img src="setting1.png" width="30" height="30"></a>
-			<a href="listLog.html"><img src="log.png" width="30" height="30"></a>
+			<a href="listLog.html"><img src="log.png" width="30" height="30" id="logi"></a>
 		</div>
 	<div id="container">
 		<h2 id="info">사원 상세</h2>
@@ -104,8 +117,11 @@
 			</tr>
 		</table>
 		<br>
+		<div id="editBtn">
 		<button id="btnUpdate">수정</button>
 		<button id="btnDelete">삭제</button>
+		</div>
+		
 	</div>
 </body>
 

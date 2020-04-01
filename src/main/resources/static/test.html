@@ -19,6 +19,12 @@
 <script type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript">
 $(function(){
+	$("#logi").hide();
+	var id=sessionStorage.getItem("id");
+	var pwd=sessionStorage.getItem("pwd");
+	if(id == "admin" && pwd == "admin"){
+		$("#logi").show();
+	}
 	$("#login").hide();
 	$("#logIn").click(function(){
 		$("#login").show();
@@ -55,7 +61,7 @@ $(function(){
 	<div class="icon">
 		<a href="test.html"><img src="home1.png" width="30" height="30"></a>
 		<img src="setting1.png" width="30" height="30" id="logIn">
-		<a href="listLog.html"><img src="log.png" width="30" height="30"></a>
+		<a href="listLog.html"><img src="log.png" width="30" height="30" id="logi"></a>
 	</div>
 	<div class="container">
 		<header class="codrops-header">
@@ -95,7 +101,7 @@ $(function(){
 					</figcaption>
 				</figure>
 			</a>
-			<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+			<a href="LogANL.html" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
 				<figure>
 					<img src="img/main4.png" />
 					<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>

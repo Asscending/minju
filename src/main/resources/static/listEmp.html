@@ -10,6 +10,12 @@
 	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
+		$("#logi").hide();
+		var id=sessionStorage.getItem("id");
+		var pwd=sessionStorage.getItem("pwd");
+		if(id == "admin" && pwd == "admin"){
+			$("#logi").show();
+		}
 		$.ajax("/listEmp", {
 			success : function(data) {
 				var tbody = $("<tbody></tbody>");
@@ -35,8 +41,7 @@
 <body>
 	<div class="icon">
 		<a href="test.html"><img src="home1.png" width="30" height="30"></a>
-		<a href="login.html"><img src="setting1.png" width="30" height="30"></a>
-		<a href="listLog.html"><img src="log.png" width="30" height="30"></a>
+		<a href="listLog.html"><img src="log.png" width="30" height="30" id="logi"></a>
 	</div>
 	<div id="container">
 		<h2 id="info">사원 목록</h2>

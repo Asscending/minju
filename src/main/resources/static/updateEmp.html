@@ -10,6 +10,12 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 $(function () {
+	$("#logi").hide();
+	var id=sessionStorage.getItem("id");
+	var pwd=sessionStorage.getItem("pwd");
+	if(id == "admin" && pwd == "admin"){
+		$("#logi").show();
+	}
 	var eno = location.search.substring(location.search.indexOf("=") + 1);
 	
 	$.getJSON("listDept", function(data){
@@ -57,8 +63,7 @@ $(function () {
 <body>
 <div class="icon">
 		<a href="test.html"><img src="home1.png" width="30" height="30"></a>
-		<a href="login.html"><img src="setting1.png" width="30" height="30"></a>
-		<a href="listLog.html"><img src="log.png" width="30" height="30"></a>
+		<a href="listLog.html"><img src="log.png" width="30" height="30" id="logi"></a>
 	</div>
 	<div id="container">
 		<h2>사원 정보 수정</h2>

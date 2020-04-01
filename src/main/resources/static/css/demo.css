@@ -210,3 +210,7 @@ tbody{
 #container{
     margin-top: 43px;
 }
+#editBtn{
+	position: relative;
+	left: 50%;
+}
