@@ -11,11 +11,18 @@
 <script type="text/javascript">
 	$(function() {
 		$("#logi").hide();
+		$("#btnInsertDept").hide();
 		var id=sessionStorage.getItem("id");
 		var pwd=sessionStorage.getItem("pwd");
 		if(id == "admin" && pwd == "admin"){
 			$("#logi").show();
+			$("#btnInsertDept").show();
 		}
+		
+		$("#btnInsertDept").click(function(){
+			location.href="insertDept.html";
+		})
+		
 		$("#list").empty();
 		$.getJSON("/listDept", function(data) {
 			var arr = data;
@@ -39,6 +46,7 @@
 	</div>
 	<div class="container">
 		<h2 id="info">부서 목록</h2>
+		<button id="btnInsertDept" style="margin-left: 100px;">등록</button>
 		<table id="tb" width="500">
 			<thead>
 				<th>부서번호</th>
@@ -48,7 +56,6 @@
 			<tbody id="list"></tbody>
 		</table>
 	</div>
-
 </body>
 
 </html>
